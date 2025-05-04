@@ -15,9 +15,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/movies")
 public class ReviewController {
-    @Autowired
-    private ReviewService reviewService;
+    
+    private final ReviewService reviewService;
 
+    @Autowired
+    public ReviewController(ReviewService reviewService) {
+        this.reviewService = reviewService;
+    }
+    
     @PostMapping("/reviews")
     public ResponseEntity<Review> postMovieReview(@RequestBody Map<String, String> payload){
 
