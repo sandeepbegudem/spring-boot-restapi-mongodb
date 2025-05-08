@@ -14,10 +14,14 @@ import java.util.List;
 
 @Service
 public class ReviewService {
-    @Autowired
-    private ReviewRepository reviewRepository;
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    
+    private final ReviewRepository reviewRepository;
+    private final MongoTemplate mongoTemplate;
+
+    public ReviewService(ReviewRepository reviewRepository, MongoTemplate mongoTemplate) {
+        this.reviewRepository = reviewRepository;
+        this.mongoTemplate = mongoTemplate;
+    }
 
     public Review insertReviewsUsingImdbId(String reviewBody, String imdbId) {
         Review review = new Review(reviewBody);
