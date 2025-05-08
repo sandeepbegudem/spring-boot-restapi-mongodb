@@ -11,8 +11,12 @@ import java.util.Optional;
 @org.springframework.stereotype.Service
 public class MovieService {
 
+    private final MovieRepository movieRepository;
+    
     @Autowired
-    private MovieRepository movieRepository;
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
     public List<Movie> getAllMovies(){
         List<Movie> allMovies = movieRepository.findAll();
